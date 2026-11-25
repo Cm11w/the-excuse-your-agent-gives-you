@@ -53,8 +53,8 @@ const TEXT = "You approved this pull request at 3 a.m. without reading it, so te
 // gate also rejects whitespace-only text. Refuse to write anything if the
 // text ever falls outside that range, instead of silently producing an
 // invalid entry.
-if (TEXT.length < 1 || TEXT.length > 200) {
-  throw new Error('TEXT must be 1-200 characters');
+if (TEXT.length < 1 || TEXT.length > 200 || TEXT.trim().length === 0) {
+  throw new Error('TEXT must be 1-200 characters and not only whitespace');
 }
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
